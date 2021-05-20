@@ -1,8 +1,7 @@
 # Курсовой проект “Интерфейс приложения”
 
-#
 ### Первое курсовое задание, выполненное мной.
-### MyHabits - трекер привычек
+#### MyHabits - трекер привычек
 ### [Задание](https://github.com/DonArtEllo/iosui-diplom) [Дизайн](https://www.figma.com/file/LSFWbwp1h8uAZ6NVbSyjHZ/Habit-tracker-Figma-Interactive)
 #
 
@@ -17,7 +16,7 @@
 - Использование UITableView, UICollectionView и кастомных ячеек.
 
   <p align="center" width="100%">
-    <img width="75%" src="./Assets/promo.png">
+    <img width="75%" src="https://www.figma.com/file/LSFWbwp1h8uAZ6NVbSyjHZ/Habit-tracker-Figma-Interactive?node-id=329%3A941">
   </p>
 
 ## Требования к проекту
