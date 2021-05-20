@@ -2,7 +2,7 @@
 
 ### Первое курсовое задание, выполненное мной.
 #### MyHabits - трекер привычек
-### [Задание](https://github.com/DonArtEllo/iosui-diplom) [Дизайн](https://www.figma.com/file/LSFWbwp1h8uAZ6NVbSyjHZ/Habit-tracker-Figma-Interactive)
+#### [Задание](https://github.com/DonArtEllo/iosui-diplom) [Дизайн](https://www.figma.com/file/LSFWbwp1h8uAZ6NVbSyjHZ/Habit-tracker-Figma-Interactive)
 #
 
 В качестве курсового проекта вы разработаете приложение "Трекер полезных привычек". Вы примените полученные знания:
@@ -16,7 +16,7 @@
 - Использование UITableView, UICollectionView и кастомных ячеек.
 
   <p align="center" width="100%">
-    <img width="75%" src="https://www.figma.com/file/LSFWbwp1h8uAZ6NVbSyjHZ/Habit-tracker-Figma-Interactive?node-id=329%3A941">
+    <img width="75%" src="https://github.com/DonArtEllo/iosui-diplom/blob/main/Assets/promo.png">
   </p>
 
 ## Требования к проекту
