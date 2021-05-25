@@ -39,11 +39,6 @@ class HabitsViewController: UIViewController {
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .white
-    
-// MARK: - ! ONLY FOR DEBUG !
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(deleteAllHabits))
-        navigationItem.rightBarButtonItem?.tintColor = .systemRed
-// --------------------------
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showCreateNewHabitViewControllerModaly))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "Custom Purple") ?? .systemPurple
@@ -71,16 +66,7 @@ class HabitsViewController: UIViewController {
         present(habitViewController, animated: true)
         habitViewController.dataDelegator = self
     }
-    
-// MARK: - ! ONLY FOR DEBUG !
-    @objc func deleteAllHabits() {
-        
-        HabitsStore.shared.habits.removeAll()
-        collectionView.reloadData()
-        collectionView.reloadInputViews()
-    }
 }
-// --------------------------
 
 // MARK: - Extensions
 // UICollectionViewDataSource

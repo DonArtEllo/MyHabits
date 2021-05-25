@@ -107,7 +107,7 @@ extension HabitDetailsViewController: UITableViewDataSource {
     // Number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return HabitsStore.shared.dates.count
+        return habit.trackDates.count
     }
     
     // Cell for row
