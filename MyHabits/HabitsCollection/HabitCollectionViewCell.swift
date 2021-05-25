@@ -132,7 +132,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
     // Toggling Checkbox button
     func toggle() {
         
-        // MARK: - Q If habit is already tracked you can't undone it... (why?)
         if habitAchievedCheckboxButton.isChecked {
             return
         }
@@ -142,10 +141,10 @@ class HabitCollectionViewCell: UICollectionViewCell {
         if habitAchievedCheckboxButton.isChecked {
             habitAchievedCheckboxButton.backgroundColor = habit?.color
             if habit?.isAlreadyTakenToday == true {
-                print("This his habit is already tracked tooday")
+                print("A habit is already tracked tooday")
             } else {
                 HabitsStore.shared.track(habit!)
-                print("You succesfuly tracked this habit")
+                print("User succesfuly tracked a habit")
                 contentView.reloadInputViews()
                 
                 self.delegateHabitCell?.updateCollection()

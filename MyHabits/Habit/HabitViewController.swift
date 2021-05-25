@@ -16,7 +16,7 @@ class HabitViewController: UIViewController {
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm a"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.locale = Locale(identifier: "en_US")
     
         return dateFormatter
     }()
@@ -112,6 +112,7 @@ class HabitViewController: UIViewController {
         let newHabitTimeDatePicker = UIDatePicker()
         newHabitTimeDatePicker.datePickerMode = .time
         newHabitTimeDatePicker.preferredDatePickerStyle = .wheels
+        newHabitTimeDatePicker.locale = Locale(identifier: "en_US")
         
         newHabitTimeDatePicker.addTarget(self, action: #selector(dateHasBeenChenged), for: .valueChanged)
         

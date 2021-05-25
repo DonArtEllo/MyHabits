@@ -247,6 +247,8 @@ class EditHabitViewController: UIViewController {
             date: newHabitTimeDatePicker.date,
             color: newHabitColorPickerButton.backgroundColor ?? habit.color
         )
+        editedHabit.trackDates = habit.trackDates
+        
         reloadInputViews()
         if let index = HabitsStore.shared.habits.firstIndex(where: { $0 == self.habit }) {
             HabitsStore.shared.habits[index] = editedHabit
