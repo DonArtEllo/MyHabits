@@ -6,61 +6,20 @@
 //
 
 import UIKit
-/* MARK: - Q: How to add following code
- Source: https://stackoverflow.com/questions/56567539/multi-component-picker-uipickerview-in-swiftui?newreg=1f1f61a09fdb4e2ab886fb29ed774ba1
-import SwiftUI
-
-struct TimerView: View {
-    @State private var hours = Calendar.current.component(.hour, from: Date())
-    @State private var minutes = Calendar.current.component(.minute, from: Date())
-
-    var body: some View {
-        TimeEditPicker(selectedHour: $hours, selectedMinute: $minutes)
-    }
-}
-
-struct TimeEditPicker: View {
-    @Binding var selectedHour: Int
-    @Binding var selectedMinute: Int
-
-    var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                Spacer()
-                Picker("", selection: self.$selectedHour) {
-                    ForEach(0..<24) {
-                        Text(String($0)).tag($0)
-                    }
-                }
-                .labelsHidden()
-                .fixedSize(horizontal: true, vertical: true)
-                .frame(width: geometry.size.width / 5, height: 160)
-                .clipped()
-
-                Picker("", selection: self.$selectedMinute) {
-                    ForEach(0..<60) {
-                        Text(String($0)).tag($0)
-                    }
-                }
-                .labelsHidden()
-                .fixedSize(horizontal: true, vertical: true)
-                .frame(width: geometry.size.width / 5, height: 160)
-                .clipped()
-
-                Spacer()
-            }
-        }
-        .frame(height: 160)
-        .mask(Rectangle())
-    }
-}
-*/
 
 class HabitViewController: UIViewController {
     
     weak var dataDelegator: UpdatingCollectionDataDelegate?
 
     private var habitColor: UIColor = .systemOrange
+    
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm a"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+    
+        return dateFormatter
+    }()
     
     // MARK: - Content
     // Name Label
@@ -129,20 +88,32 @@ class HabitViewController: UIViewController {
         return timeLabel
     }()
     
-    // New habit time text
-    private let newHabitTimeLabel: UILabel = {
-        let newHabitTimeLabel = UILabel()
-        newHabitTimeLabel.text = "Каждый день в "
+    // New habit time text (text part)
+    private let newHabitTimeTextLabel: UILabel = {
+        let newHabitTimeTextLabel = UILabel()
+        newHabitTimeTextLabel.text = "Каждый день в "
         
-        newHabitTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        return newHabitTimeLabel
+        newHabitTimeTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        return newHabitTimeTextLabel
     }()
     
+    // New habit time text (time part)
+    private let newHabitTimeDateLabel: UILabel = {
+        let newHabitTimeDateLabel = UILabel()
+        newHabitTimeDateLabel.textColor = UIColor(named: "CustomPurple")
+        
+        newHabitTimeDateLabel.translatesAutoresizingMaskIntoConstraints = false
+        return newHabitTimeDateLabel
+    }()
+    
+    
     // New habit Time Picker
-    // MARK: - Q: How to make DatePicker look like in Figma.com (Design)
     private let newHabitTimeDatePicker: UIDatePicker = {
         let newHabitTimeDatePicker = UIDatePicker()
         newHabitTimeDatePicker.datePickerMode = .time
+        newHabitTimeDatePicker.preferredDatePickerStyle = .wheels
+        
+        newHabitTimeDatePicker.addTarget(self, action: #selector(dateHasBeenChenged), for: .valueChanged)
         
         newHabitTimeDatePicker.translatesAutoresizingMaskIntoConstraints = false
         return newHabitTimeDatePicker
@@ -155,6 +126,8 @@ class HabitViewController: UIViewController {
         
         view.backgroundColor = .white
         habitColor = newHabitColorPickerButton.backgroundColor!
+        
+        newHabitTimeDateLabel.text = dateFormatter.string(from: newHabitTimeDatePicker.date)
         
         newHabitNameTextField.delegate = self
         
@@ -170,7 +143,8 @@ class HabitViewController: UIViewController {
             colorLabel,
             newHabitColorPickerButton,
             timeLabel,
-            newHabitTimeLabel,
+            newHabitTimeTextLabel,
+            newHabitTimeDateLabel,
             newHabitTimeDatePicker
         )
 
@@ -191,11 +165,16 @@ class HabitViewController: UIViewController {
             timeLabel.topAnchor.constraint(equalTo: newHabitColorPickerButton.bottomAnchor, constant: bigVerticalSpacer),
             timeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalSpacer),
             
-            newHabitTimeLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: smallVerticalSpacer),
-            newHabitTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalSpacer),
+            newHabitTimeTextLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: smallVerticalSpacer),
+            newHabitTimeTextLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: horizontalSpacer),
             
-            newHabitTimeDatePicker.leadingAnchor.constraint(equalTo: newHabitTimeLabel.trailingAnchor),
-            newHabitTimeDatePicker.centerYAnchor.constraint(equalTo: newHabitTimeLabel.centerYAnchor)
+            newHabitTimeDateLabel.topAnchor.constraint(equalTo: newHabitTimeTextLabel.topAnchor),
+            newHabitTimeDateLabel.leadingAnchor.constraint(equalTo: newHabitTimeTextLabel.trailingAnchor),
+            
+            newHabitTimeDatePicker.topAnchor.constraint(equalTo: newHabitTimeTextLabel.bottomAnchor, constant: bigVerticalSpacer),
+            newHabitTimeDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            newHabitTimeDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            newHabitTimeDatePicker.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor)
         ]
         
         NSLayoutConstraint.activate(constraints)
@@ -250,10 +229,17 @@ class HabitViewController: UIViewController {
     
     // Opening color picker
     @objc private func didTappedOnColorPicker() {
+        
         let colorPickerViewController = UIColorPickerViewController()
         colorPickerViewController.delegate = self
         colorPickerViewController.supportsAlpha = false
         present(colorPickerViewController, animated: true)
+    }
+    
+    // Date has been changed via DatePicker
+    @objc private func dateHasBeenChenged(_ sender: UIDatePicker) {
+        
+        newHabitTimeDateLabel.text = dateFormatter.string(from: sender.date)
     }
 }
 
