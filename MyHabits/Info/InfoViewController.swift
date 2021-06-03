@@ -21,7 +21,6 @@ class InfoViewController: UIViewController {
         textTitle.font = .boldSystemFont(ofSize: 24)
         textTitle.numberOfLines = 1
     
-        textTitle.translatesAutoresizingMaskIntoConstraints = false
         return textTitle
     }()
     
@@ -31,7 +30,6 @@ class InfoViewController: UIViewController {
         textHeader.text = "Прохождение этапов, за которые за 21 день вырабатывается привычка, подчиняется следующему алгоритму:"
         textHeader.numberOfLines = 0
     
-        textHeader.translatesAutoresizingMaskIntoConstraints = false
         return textHeader
     }()
     
@@ -41,7 +39,6 @@ class InfoViewController: UIViewController {
         textPartOne.text = "1. Провести 1 день без обращения к старым привычкам, стараться вести себя так, как будто цель, загаданная в перспективу, находится на расстоянии шага."
         textPartOne.numberOfLines = 0
         
-        textPartOne.translatesAutoresizingMaskIntoConstraints = false
         return textPartOne
     }()
     
@@ -50,7 +47,6 @@ class InfoViewController: UIViewController {
         textPartTwo.text = "2. Выдержать 2 дня в прежнем состоянии самоконтроля."
         textPartTwo.numberOfLines = 0
     
-        textPartTwo.translatesAutoresizingMaskIntoConstraints = false
         return textPartTwo
     }()
     
@@ -59,7 +55,6 @@ class InfoViewController: UIViewController {
         textPartThree.text = "3. Отметить в дневнике первую неделю изменений и подвести первые итоги — что оказалось тяжело, что — легче, с чем еще предстоит серьезно бороться."
         textPartThree.numberOfLines = 0
     
-        textPartThree.translatesAutoresizingMaskIntoConstraints = false
         return textPartThree
     }()
     
@@ -68,7 +63,6 @@ class InfoViewController: UIViewController {
         textPartFour.text = "4. Поздравить себя с прохождением первого серьезного порога в 21 день. За это время отказ от дурных наклонностей уже примет форму осознанного преодоления и человек сможет больше работать в сторону принятия положительных качеств."
         textPartFour.numberOfLines = 0
     
-        textPartFour.translatesAutoresizingMaskIntoConstraints = false
         return textPartFour
     }()
     
@@ -77,7 +71,6 @@ class InfoViewController: UIViewController {
         textPartFive.text = "5. Держать планку 40 дней. Практикующий методику уже чувствует себя освободившимся от прошлого негатива и двигается в нужном направлении с хорошей динамикой."
         textPartFive.numberOfLines = 0
     
-        textPartFive.translatesAutoresizingMaskIntoConstraints = false
         return textPartFive
     }()
     
@@ -86,7 +79,6 @@ class InfoViewController: UIViewController {
         textPartSix.text = "6. На 90-й день соблюдения техники все лишнее из «прошлой жизни» перестает напоминать о себе, и человек, оглянувшись назад, осознает себя полностью обновившимся."
         textPartSix.numberOfLines = 0
     
-        textPartSix.translatesAutoresizingMaskIntoConstraints = false
         return textPartSix
     }()
     
@@ -95,7 +87,6 @@ class InfoViewController: UIViewController {
         let footNote = UILabel()
         footNote.text = "Источник: psychbook.ru"
         
-        footNote.translatesAutoresizingMaskIntoConstraints = false
         return footNote
     }()
     

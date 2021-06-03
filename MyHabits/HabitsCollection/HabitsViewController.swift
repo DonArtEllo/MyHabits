@@ -187,6 +187,5 @@ extension HabitsViewController: UpdatingCollectionDataDelegate {
     func updateCollection() {
         
         collectionView.reloadData()
-        collectionView.reloadInputViews()
     }
 }

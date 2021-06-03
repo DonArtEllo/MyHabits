@@ -25,7 +25,10 @@ extension UIView {
     
     /// Method for adding more than one subview at a time
     func addSubviews(_ views: UIView...) {
-        views.forEach { addSubview($0) }
+        views.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
+        }
     }
 }
 

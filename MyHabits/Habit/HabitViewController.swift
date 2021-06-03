@@ -28,7 +28,6 @@ class HabitViewController: UIViewController {
         nameLabel.text = "НАЗВАНИЕ"
         nameLabel.font = .boldSystemFont(ofSize: 13)
         
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
         return nameLabel
     }()
     
@@ -40,7 +39,6 @@ class HabitViewController: UIViewController {
         newHabitNameTextField.placeholder = "Бегать по утрам, спать 8 часов и т.п."
         newHabitNameTextField.returnKeyType = .done
         
-        newHabitNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return newHabitNameTextField
     }()
     
@@ -50,7 +48,6 @@ class HabitViewController: UIViewController {
         colorLabel.text = "ЦВЕТ"
         colorLabel.font = .boldSystemFont(ofSize: 13)
         
-        colorLabel.translatesAutoresizingMaskIntoConstraints = false
         return colorLabel
     }()
     
@@ -74,7 +71,6 @@ class HabitViewController: UIViewController {
         newHabitColorPickerButton.isUserInteractionEnabled = true
         newHabitColorPickerButton.addTarget(self, action: #selector(didTappedOnColorPicker), for: .touchUpInside)
         
-        newHabitColorPickerButton.translatesAutoresizingMaskIntoConstraints = false
         return newHabitColorPickerButton
     }()
     
@@ -84,7 +80,6 @@ class HabitViewController: UIViewController {
         timeLabel.text = "ВРЕМЯ"
         timeLabel.font = .boldSystemFont(ofSize: 13)
         
-        timeLabel.translatesAutoresizingMaskIntoConstraints = false
         return timeLabel
     }()
     
@@ -93,7 +88,6 @@ class HabitViewController: UIViewController {
         let newHabitTimeTextLabel = UILabel()
         newHabitTimeTextLabel.text = "Каждый день в "
         
-        newHabitTimeTextLabel.translatesAutoresizingMaskIntoConstraints = false
         return newHabitTimeTextLabel
     }()
     
@@ -102,7 +96,6 @@ class HabitViewController: UIViewController {
         let newHabitTimeDateLabel = UILabel()
         newHabitTimeDateLabel.textColor = UIColor(named: "CustomPurple")
         
-        newHabitTimeDateLabel.translatesAutoresizingMaskIntoConstraints = false
         return newHabitTimeDateLabel
     }()
     
@@ -116,7 +109,6 @@ class HabitViewController: UIViewController {
         
         newHabitTimeDatePicker.addTarget(self, action: #selector(dateHasBeenChenged), for: .valueChanged)
         
-        newHabitTimeDatePicker.translatesAutoresizingMaskIntoConstraints = false
         return newHabitTimeDatePicker
     }()
     

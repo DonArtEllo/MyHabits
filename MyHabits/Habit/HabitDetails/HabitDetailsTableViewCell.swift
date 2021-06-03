@@ -14,7 +14,6 @@ class HabitDetailsTableViewCell: UITableViewCell {
     private let trackedDayLabel: UILabel = {
         let trackedDayLabel = UILabel()
         
-        trackedDayLabel.translatesAutoresizingMaskIntoConstraints = false
         return trackedDayLabel
     }()
     
@@ -25,7 +24,6 @@ class HabitDetailsTableViewCell: UITableViewCell {
         checkMarkImage.image = UIImage(systemName: "checkmark")
         checkMarkImage.isHidden = true
         
-        checkMarkImage.translatesAutoresizingMaskIntoConstraints = false
         return checkMarkImage
     }()
     

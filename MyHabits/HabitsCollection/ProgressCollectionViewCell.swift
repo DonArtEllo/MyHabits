@@ -17,7 +17,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         progressTitleLabel.font = .systemFont(ofSize: 13, weight: .semibold)
         progressTitleLabel.textColor = .systemGray
         
-        progressTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         return progressTitleLabel
     }()
     
@@ -29,7 +28,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         progressPercentageLabel.textColor = .systemGray
         progressPercentageLabel.textAlignment = .right
         
-        progressPercentageLabel.translatesAutoresizingMaskIntoConstraints = false
         return progressPercentageLabel
     }()
     
@@ -38,7 +36,6 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         let progressView = UIProgressView()
         progressView.setProgress(HabitsStore.shared.todayProgress, animated: true)
         
-        progressView.translatesAutoresizingMaskIntoConstraints = false
         return progressView
     }()
     

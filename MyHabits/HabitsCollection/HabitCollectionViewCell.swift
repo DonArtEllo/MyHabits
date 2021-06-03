@@ -28,7 +28,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         let habitNameLabel = UILabel()
         habitNameLabel.numberOfLines = 2
         
-        habitNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return habitNameLabel
     }()
     
@@ -38,7 +37,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         habitTimeLabel.font = .systemFont(ofSize: 12)
         habitTimeLabel.textColor = .systemGray2
         
-        habitTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         return habitTimeLabel
     }()
     
@@ -48,7 +46,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         habitAchievedCounterLabel.font = .systemFont(ofSize: 13)
         habitAchievedCounterLabel.textColor = .systemGray
         
-        habitAchievedCounterLabel.translatesAutoresizingMaskIntoConstraints = false
         return habitAchievedCounterLabel
     }()
     
@@ -67,7 +64,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         
         habitAchievedCheckboxButton.isUserInteractionEnabled = true
         
-        habitAchievedCheckboxButton.translatesAutoresizingMaskIntoConstraints = false
         return habitAchievedCheckboxButton
     }()
     
